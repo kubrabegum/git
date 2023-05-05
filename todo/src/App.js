@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import { Add } from './components/Add';
 import { Header } from './components/Header';
+import { Modal } from './components/Modal';
 import { TodolistFetch } from './components/TodolistFetch';
 function App() {
   const [input,setInput]=useState("");
@@ -24,7 +25,6 @@ function App() {
         <TodolistFetch todos={todos} setTodos={setTodos} setEdit={setEdit}/>
       </div>
       </div>
-
     </div>
     </>
   );
