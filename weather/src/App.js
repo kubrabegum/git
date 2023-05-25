@@ -1,50 +1,45 @@
-import axios from 'axios';
-import moment from 'moment-timezone';
-import { useState } from 'react';
-import './App.css';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import "./App.css";
+import Quizzz from "./components/Quizzz";
+import Tours from "./components/Tours";
+import Form from "./netlify/Form";
+import Netlify from "./netlify/Netlify";
+import UseREfff from "./netlify/UseREfff";
+import Review from "./review/Review";
 
 function App() {
+  const [tours, setTours] = useState([]);
 
-  let [cityName,setCityName]=useState("")
-  
-  const onChange=(e)=>{
-    setCityName(e.target.value)
-  }
-  
-  const onClick=async(e)=>{
-   try {
-    let apiKey="565740994032c44c42a9267c41281294"
-    let response=await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`)
-    console.log(response)
-    console.log(setCityName(response.data.sys.country))
-    console.log(response.data.name)
-    console.log(response.data.main.temp)
-   } catch (error) {
-    console.error(error)
-   }
-  }
+  const fetchData = async () => {
+    let { data } = await axios.get(
+      "https://course-api.com/react-tours-project"
+    );
+    setTours(data);
+    // console.log(data);
+  };
 
-  const localDate=new Date()
-  const localTime=localDate.toLocaleTimeString()
+  const remove = (id) => {
+    let newTour = tours.filter((ele) => ele.id !== id);
+    setTours(newTour);
+  };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
-    <div >
-      <div className="bg-origin-border  border-shadow h-screen bg-cover " style={{ backgroundImage: 'url(https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?cs=srgb&dl=pexels-johannes-plenio-1118873.jpg&fm=jpg)' }}>
-      <div className='rounded-[12px] ' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', padding:'100px'}}>
-        <input className='w-[50%] h-[50px] ' type='input' placeholder='enter the city name' value={cityName} onChange={onChange}></input>
-        <button className='text-black h-[50px] gap-2 bg-white p-3 ' style={{padding:'10px'}} onClick={onClick}>search</button>
+    <>
+      {/* <button className="text-center bg-sky-400 p-2 ml-8 mt-3 text-white rounded-md" onClick={fetchData}>Refresh</button> this is for tours*/}
+      <div className="justify-center m-4">
+        {/* <Tours tours={tours} remove={remove} /> */}
+        {/* <Review/> */}
+        {/* <Netlify/> */}
+        {/* <UseREfff/> */}
+        {/* <Form/> */}
+        <Quizzz/>
       </div>
-      <p>{cityName}</p>
-      {/* <p>Date :{moment.tz(localDate).format()}</p> */}
-      <p>time : {localTime}</p>
-      <p></p>
-        </div>
-       
-    </div>
+    </>
   );
 }
 
 export default App;
-
-
-

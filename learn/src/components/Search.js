@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 
 const Search = ({searchUser}) => {
-    console.log(searchUser)
-const [username,setUsername]=useState("")
+const [username,setUsername]=useState("");
+const[clear,setClear]=useState("")
+const onClickClear=()=>{
+  setClear(clear)
+}
 const onChange=(e)=>{
     setUsername(e.target.value)
 }
 const onSubmit =(e)=>{
     e.preventDefault()
-    searchUser(username)
+    if(!username){
+    return  alert("user not not be empty")
+    }
+    searchUser(username);
+   alert ("Data fetch successfully")
 }
   return (
     <div>
@@ -27,12 +34,12 @@ const onSubmit =(e)=>{
           <div className="mt-2">
             <button
               type="submit"
-              onSubmit={onSubmit}
+              onClick={onSubmit}
               className="px-4 py-2 bg-blue-500 text-white rounded-md mr-2"
             >
               Submit
             </button>
-            <button className="px-4 py-2 bg-gray-500 text-white rounded-md">
+            <button onClick={onClickClear} className="px-4 py-2 bg-gray-500 text-white rounded-md">
               Clear
             </button>
           </div>
