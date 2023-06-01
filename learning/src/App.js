@@ -11,14 +11,16 @@ import "./components/appstyle.css";
 import { List } from './components/List';
 import { Product } from './components/Product';
 import { Clickme } from './components/Clickme';
+import Paragraph from './personal/Paragraph';
+import Main from './color/Main';
 
 
 function App() {
   return (
     <>
     <div className="App">
-      <Clickme/>
-      <Product/>
+      {/* <Clickme/>
+      <Product/> */}
       {/* <List/> */}
       {/* <h1 className='error'>console</h1> */}
       {/* <Inline/> */}
@@ -43,6 +45,8 @@ function App() {
     <Welcome name=' Bruce' heroname='superman'/>
     <Welcome name=' Bruce' heroname='super women'/> */}
     {/* <Hello/> */}
+    {/* <Paragraph/> */}
+    <Main/>
     </div>
     </>
   );
