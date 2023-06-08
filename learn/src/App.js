@@ -20,7 +20,7 @@ function App() {
         {
           auth: {
             username: "kubrabegum",
-            password: "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",
+            password: "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",
           },
         }
       );
@@ -32,7 +32,7 @@ function App() {
         {
           auth: {
             username: "kubrabegum",
-            password: "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",
+            password: "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",
           },
         }
       );
@@ -51,7 +51,7 @@ function App() {
         {
           auth: {
             username: "kubrabegum",
-            password: "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",
+            password: "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",
           },
         }
       );
@@ -71,7 +71,7 @@ function App() {
         let { data } = await axios.get("https://api.github.com/users", {
           auth: {
             username: "kubrabegum",
-            password: "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",
+            password: "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",
           },
         });
         setUsers(data);
@@ -85,7 +85,7 @@ function App() {
   }, []);
   return (
     <>
-      {/* <Routes>
+      <Routes>
         <Route
           path="/"
           element={<Home searchUser={searchUser} users={users} loading={loading} />}
@@ -94,8 +94,8 @@ function App() {
           path="/user/:username"
           element={<User singleUser={singleUser} user={user} repos={repos} loading={loading} />}
         />
-      </Routes> */}
-      <Netlify/>
+      </Routes>
+      {/* <Netlify/> */}
     </>
   );
 }
