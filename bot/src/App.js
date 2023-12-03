@@ -1,15 +1,29 @@
 import './App.css';
+import React, { useState } from 'react';
+import Question from './components/Question';
+import { QuizSummary } from './components/QuizSummary';
+import {reactMCQs} from "./components/questions"
 
-function App() {
+const App = () => {
+  const [quizCompleted, setQuizCompleted] = useState(false);
+  const [questions, setQuestions] = useState(reactMCQs);
+
+  const handleQuizComplete = () => {
+    setQuizCompleted(true);
+  };
+
   return (
-    <>
-     <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-    </>
+    <div>
+      {!quizCompleted ? (
+        <Question
+          questions={questions}
+          onQuizComplete={handleQuizComplete}
+        />
+      ) : (
+        <QuizSummary  />
+      )}
+    </div>
   );
-}
+};
 
 export default App;
-// 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
-// kubrabegum 
